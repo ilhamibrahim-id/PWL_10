@@ -47,7 +47,7 @@ class ArticleController extends Controller
             'featured_image' => $image_name,
         ]);
 
-        return redirect()->route('articles.index')->with('success', 'Data articel tersimpan');
+        return 'Data articel tersimpan';
     }
 
     /**

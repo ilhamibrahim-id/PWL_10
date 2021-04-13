@@ -22,7 +22,6 @@
                             <input type="file" class="form-control-file" id="image" name="image">
                         </div>
                         <button class="btn btn-primary" type="submit">Submit</button>
-                        <a href="{{ route('articles.index') }}" class="btn btn-dark">Back</a>
                     </form>
                 </div>
             </div>
