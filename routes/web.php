@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\ArticleController;
 Route::resource('articles', ArticleController::class);
+Route::get('/articles/print_pdf', [ArticleController::class, 'print_pdf']);
