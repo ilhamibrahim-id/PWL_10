@@ -51,6 +51,17 @@
 	<label for="tanggal_lahir">tanggal_lahir</label>
 <input type="tanggal_lahir"name="tanggal_lahir"class="form-control"id="tanggal_lahir"value="{{$mahasiswa->tanggal_lahir}}"aria-describedby="tanggal_lahir">
 </div>
+@php
+$pathImage = '';
+$Mahasiswa->foto ? ($pathImage = 'storage/' . $Mahasiswa->foto) : ($pathImage = 'img/empty.jpg');
+@endphp
+<div class="d-flex align-items-start mb-3">
+<img src="{{ asset('' . $pathImage . '') }}" alt="" width="100" class="img-responsive">
+<div class="form-group ml-3 ">
+    <label for="photo">Photo</label>
+    <input type="file" class="form-control-file" id="photo" name="photo">
+</div>
+</div>
 <button type="submit"class="btn btn-primary">Submit</button>
 </form>
 </div>
