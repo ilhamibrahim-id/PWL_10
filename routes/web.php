@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MahasiswaController;
 Route::get('articles/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
+Route::get('mahasiswa/cetak-khs/{nim}', [MahasiswaController::class, 'cetak_pdf'])->name('nilai.cetak');
 Route::post('cari',[MahasiswaController::class,'cari']);
 Route::get('mahasiswa/nilai/{nim}', [MahasiswaController::class, 'nilai'])->name('mahasiswa.nilai');
 Route::resource('articles', ArticleController::class);

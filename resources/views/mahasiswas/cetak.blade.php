@@ -1,14 +1,44 @@
-@extends('mahasiswas.layout')
-@section('content')
+    <style>
+        table {
+  border: 1px solid rgb(0, 0, 0);
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #fdfdfd;
+  border: 3px solid rgb(0, 0, 0);
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+</style>
     <div class="row">
         <div class="col-12 text-center">
-            <h3><strong>KARTU HASIL STUDI (KHS)</strong></h3>
+            <center><h3><strong>Politeknik Negeri MALANG</strong></h3><br /><h3><strong>KARTU HASIL STUDI (KHS)</strong></h3></center>
         </div>
         <div class="col-12 my-4">
             <p class="m-0"><strong>Nama:</strong> {{ $mahasiswa->nama }}</p>
             <p class="m-0"><strong>NIM:</strong> {{ $mahasiswa->nim }}</p>
             <p class="m-0"><strong>Kelas:</strong> {{ $mahasiswa->kelas->nama_kelas }}</p>
-            <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary">Kembali</a>
         </div>
         <div class="col-12">
             <table class="table table-bordered">
@@ -29,7 +59,3 @@
             </table>
         </div>
     </div>
-    <center>
-        <a href="{{ route('nilai.cetak', $mahasiswa->nim) }}" class="btn btn-danger">Cetak KHS</a>
-    </center>
-@endsection
