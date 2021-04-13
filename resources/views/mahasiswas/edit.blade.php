@@ -14,9 +14,10 @@
 @endforeach
 </ul></div>
 @endif
-<form method="post"action="{{route('mahasiswa.update',['mahasiswa'=>$mahasiswa->nim])}}"id="myForm">
-@csrf
-@method('PUT')
+<form action="/mahasiswa/{{$mahasiswa->nim}}" method="post"
+    enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 <div class="form-group">
 	<label for="Nim">Nim</label>
 <input type="text"name="nim"class="form-control"id="Nim"value="{{$mahasiswa->nim}}"aria-describedby="Nim"></div>
@@ -53,13 +54,13 @@
 </div>
 @php
 $pathImage = '';
-$Mahasiswa->foto ? ($pathImage = 'storage/' . $Mahasiswa->foto) : ($pathImage = 'img/empty.jpg');
+$mahasiswa->foto ? ($pathImage = 'storage/' . $mahasiswa->foto) : ($pathImage = 'img/empty.jpg');
 @endphp
 <div class="d-flex align-items-start mb-3">
 <img src="{{ asset('' . $pathImage . '') }}" alt="" width="100" class="img-responsive">
 <div class="form-group ml-3 ">
-    <label for="photo">Photo</label>
-    <input type="file" class="form-control-file" id="photo" name="photo">
+    <label for="foto">Foto</label>
+    <input type="file" class="form-control-file" id="foto" name="foto">
 </div>
 </div>
 <button type="submit"class="btn btn-primary">Submit</button>

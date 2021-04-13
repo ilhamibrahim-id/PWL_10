@@ -7,6 +7,8 @@ use App\Models\Mahasiswa;
 use App\Models\Kelas;
 use App\Models\Mahasiswa_Matakuliah;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 class MahasiswaController extends Controller
 {
     /**
@@ -50,12 +52,16 @@ class MahasiswaController extends Controller
         ,'email'=>'required'
         ,'tanggal_lahir'=>'required'
         ]);
+        if($request->file('foto')) {
+            $photo_name = $request->file('foto')->store('images', 'public');
+        }
         $kelas = Kelas::find($request->get('kelas'));
 
 
         $mahasiswa = new Mahasiswa();
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->foto = $photo_name;
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->no_handphone = $request->get('no_handphone');
         $mahasiswa->email = $request->get('email');
@@ -111,6 +117,11 @@ class MahasiswaController extends Controller
         ]);
         $kelas = Kelas::find($request->get('kelas'));
         $mahasiswa = Mahasiswa::find($nim);
+        if($mahasiswa->foto && file_exists( storage_path('app/public/' . $mahasiswa->foto))){
+            Storage::delete('public/' . $mahasiswa->foto);
+        }
+        $photo_name = $request->file('foto')->store('images','public');
+        $mahasiswa->foto = $photo_name;
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');
