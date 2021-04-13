@@ -53,7 +53,7 @@ class MahasiswaController extends Controller
         ,'tanggal_lahir'=>'required'
         ]);
         if($request->file('foto')) {
-            $photo_name = $request->file('foto')->store('images', 'public');
+            $photo_name = $request->file('foto')->store('fotos', 'public');
         }
         $kelas = Kelas::find($request->get('kelas'));
 
@@ -120,7 +120,7 @@ class MahasiswaController extends Controller
         if($mahasiswa->foto && file_exists( storage_path('app/public/' . $mahasiswa->foto))){
             Storage::delete('public/' . $mahasiswa->foto);
         }
-        $photo_name = $request->file('foto')->store('images','public');
+        $photo_name = $request->file('foto')->store('fotos','public');
         $mahasiswa->foto = $photo_name;
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
