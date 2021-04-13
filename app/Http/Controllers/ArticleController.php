@@ -36,8 +36,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->file('image')) {
-            $image_name = $request->file('image')->store('images','public');
+        if($request->file('image')) {
+            $image_name = $request->file('image')->store('images', 'public');
         }
 
         Article::create([
@@ -45,7 +45,8 @@ class ArticleController extends Controller
             'content' => $request->content,
             'featured_image' => $image_name,
         ]);
-        return 'Artikel berhasil disimpan';
+
+        return redirect()->route('articles.index')->with('success', 'Data articel tersimpan');
     }
 
     /**
