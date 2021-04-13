@@ -27,6 +27,14 @@
 <li class="list-group-item">
     <b>Tanggal_Lahir:</b>{{$mahasiswa->tanggal_lahir}}
 </li>
+<li class="list-group-item">
+    <b>Foto:</b>
+        @php
+        $pathImage = '';
+        $mahasiswa->foto ? ($pathImage = 'storage/' . $mahasiswa->foto) : ($pathImage = 'img/empty.jpg');
+    @endphp
+    <img src="{{ asset('' . $pathImage . '') }}" width="100" alt="">
+</li>
 </ul>
 </div>
 <a class="btn btn-success mt-3"href="{{route('mahasiswa.index')}}">
