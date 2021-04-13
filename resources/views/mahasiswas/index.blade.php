@@ -30,6 +30,7 @@
 <tr>
 	<th>Nim</th>
 	<th>Nama</th>
+    <th>Foto</th>
 	<th>Kelas</th>
 	<th>Jurusan</th>
 	<th>No_Handphone</th>
@@ -41,6 +42,13 @@
 <tr>
 	<td>{{$mahasiswa->nim}}</td>
 	<td>{{$mahasiswa->nama}}</td>
+    <td>
+        @php
+        $pathImage = '';
+        $mahasiswa->foto ? ($pathImage = 'storage/' . $mahasiswa->foto) : ($pathImage = 'img/empty.jpg');
+    @endphp
+    <img src="{{ asset('' . $pathImage . '') }}" width="100" alt="">
+    </td>
 	<td>{{$mahasiswa->kelas->nama_kelas}}</td>
 	<td>{{$mahasiswa->jurusan}}</td>
 	<td>{{$mahasiswa->no_handphone}}</td>
