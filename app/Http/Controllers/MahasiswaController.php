@@ -58,6 +58,8 @@ class MahasiswaController extends Controller
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->no_handphone = $request->get('no_handphone');
+        $mahasiswa->email = $request->get('email');
+        $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');
         $mahasiswa->kelas()->associate($kelas);
         $mahasiswa->save();
 
@@ -113,6 +115,8 @@ class MahasiswaController extends Controller
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->no_handphone = $request->get('no_handphone');
+        $mahasiswa->email = $request->get('email');
+        $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');
         $mahasiswa->kelas()->associate($kelas);
         $mahasiswa->save();
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Diupdate');
